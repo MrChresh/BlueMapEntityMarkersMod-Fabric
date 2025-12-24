@@ -1,0 +1,31 @@
+package com.chresh.bluemapentitymarkersmod.actions;
+
+import com.chresh.bluemapentitymarkersmod.markers.MarkerIdentifier;
+
+public class UpdateMarkerAction extends MarkerAction {
+    private final String newLabel;
+    private final String newDetails;
+
+    public UpdateMarkerAction(MarkerIdentifier markerIdentifier, String newLabel, String newDetail) {
+        super(markerIdentifier);
+        this.newLabel = newLabel;
+        this.newDetails = newDetail;
+    }
+
+    public String getNewLabel() {
+        return newLabel;
+    }
+
+    public String getNewDetails() {
+        return newDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "UpdateMarkerAction{" +
+                "markerIdentifier=" + getMarkerIdentifier() +
+                ", newLabel='" + newLabel + '\'' +
+                ", newDetails='" + newDetails + '\'' +
+                '}';
+    }
+}

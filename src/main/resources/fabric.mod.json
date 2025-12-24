@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "bluemapentitymarkersmod",
+	"version": "1.0.0",
+	"name": "bluemapentitymarkersmod",
+	"description": "bluemapentitymarkersmod",
+	"authors": [
+		{
+			"name": "chresh",
+			"contact": {
+				"sources": "",
+				"homepage": ""
+			}
+		}
+	],
+	"contact": {
+		"homepage": "",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "",
+	"environment": "server",
+	"entrypoints": {
+		"server": [
+			"com.chresh.bluemapentitymarkersmod.BlueMapEntityMarkersMod"
+		]
+	},
+	"mixins": [
+		
+	],
+	"depends": {
+		"fabricloader": ">=0.14.22",
+		"minecraft": "~1.20",
+		"java": ">=17",
+		"fabric-api": "*",
+		"bluemap": "*"
+	}
+}
