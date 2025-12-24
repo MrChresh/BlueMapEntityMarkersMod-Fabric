@@ -41,10 +41,11 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 
 
         scheduler.scheduleAtFixedRate(() -> {
-				entityEntries.clear();
 				for (EntityEntry entityEntry : entityEntries) {
 					EntityManager.remove(entityEntry);
 				}
+				entityEntries.clear();
+				
             	server.getWorlds().forEach(world -> {
 				world.getEntitiesByClass(MobEntity.class, TheBox, Predicate.not(Entity::isRemoved)).forEach(entity -> {
 

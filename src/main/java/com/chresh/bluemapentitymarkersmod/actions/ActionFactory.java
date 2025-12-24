@@ -18,7 +18,7 @@ public class ActionFactory {
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("BMEMM", MarkerGroupType.POI, "entity", "", 0, 0))),
                 uuid,
                 simpleName);
     }
@@ -29,7 +29,7 @@ public class ActionFactory {
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "", "", 0, 0))));
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("BMEMM", MarkerGroupType.POI, "entity", "", 0, 0))));
     }
 
     public UpdateMarkerAction createUpdatePOIAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
@@ -38,7 +38,7 @@ public class ActionFactory {
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("BMEMM", MarkerGroupType.POI, "entity", "", 0, 0))),
                 uuid,
                 simpleName);
     }

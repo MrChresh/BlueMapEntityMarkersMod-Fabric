@@ -97,6 +97,7 @@ public class BlueMapAPIConnector {
                 markerSetMap.put(addAction.getMarkerIdentifier().getId(), markerBuilder.build());
             }
         } else if (markerAction instanceof RemoveMarkerAction removeAction) {
+            //LOGGER.debug("Adding marker (id {}) to marker set: {}", removeAction.getMarkerIdentifier().getId(), markerSetMap);
             //LOGGER.debug("Removing marker...");
             markerSetMap.remove(removeAction.getMarkerIdentifier().getId());
         } else if (markerAction instanceof UpdateMarkerAction updateAction) {
