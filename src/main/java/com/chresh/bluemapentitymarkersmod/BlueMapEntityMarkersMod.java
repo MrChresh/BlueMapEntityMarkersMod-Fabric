@@ -6,6 +6,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
+import org.apache.logging.log4j.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,13 +39,13 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 	private void markerRunner(MinecraftServer server) {
 		Box TheBox = new Box(BlockPos.ORIGIN).expand(12000);
 		ArrayList<EntityEntry> entityEntries = new ArrayList<>();
-
+		
+		//org.apache.logging.log4j.core.config.Configurator.setLevel(Constants.MOD_ID, Level.DEBUG);
 
 		if (server != null) {
 		//MinecraftServer server = MinecraftClient.getInstance().getServer();
 
 		this.scheduler = Executors.newScheduledThreadPool(1); // 1 is the size of the thread pool being created
-
 
         scheduler.scheduleAtFixedRate(() -> {
 				for (EntityEntry entityEntry : entityEntries) {
@@ -54,7 +55,7 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 				
             	server.getWorlds().forEach(world -> {
 					world.getEntitiesByClass(MobEntity.class, TheBox, Predicate.not(Entity::isRemoved)).forEach(entity -> {
-						
+
 					LOGGER.debug("Entity...: {}, World {}", entity, entity.getWorld().getRegistryKey().getValue());
 					LOGGER.debug("Entity info: isSkyVisible {}, has skylight {}, has Ceiling {}", entity.getWorld().isSkyVisible(entity.getBlockPos()), entity.getWorld().getDimension().hasSkyLight(), entity.getWorld().getDimension().hasCeiling());
 					

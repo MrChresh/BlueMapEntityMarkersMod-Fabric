@@ -12,33 +12,33 @@ public class ActionFactory {
         this.markerSetIdentifierCollection = markerSetIdentifierCollection;
     }
 
-    public AddMarkerAction createAddPOIAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public AddMarkerAction createAddExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
         return new AddMarkerAction(
                 new MarkerIdentifier(
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "Entity", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
                 uuid,
                 simpleName);
     }
 
-    public RemoveMarkerAction createRemovePOIAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public RemoveMarkerAction createRemoveExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
         return new RemoveMarkerAction(
                 new MarkerIdentifier(
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "Entity", "", 0, 0))));
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))));
     }
 
-    public UpdateMarkerAction createUpdatePOIAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public UpdateMarkerAction createUpdateExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
         return new UpdateMarkerAction(
                 new MarkerIdentifier(
                         x,
                         y,
                         z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.POI, "Entity", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
                 uuid,
                 simpleName);
     }

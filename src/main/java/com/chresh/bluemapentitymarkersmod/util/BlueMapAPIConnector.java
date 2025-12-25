@@ -2,8 +2,11 @@ package com.chresh.bluemapentitymarkersmod.util;
 
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
+import de.bluecolored.bluemap.api.markers.ExtrudeMarker;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import de.bluecolored.bluemap.api.markers.POIMarker;
+import de.bluecolored.bluemap.api.math.Color;
+import de.bluecolored.bluemap.api.math.Shape;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,7 @@ import com.chresh.bluemapentitymarkersmod.actions.UpdateMarkerAction;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroupType;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerSetIdentifier;
 import com.chresh.bluemapentitymarkersmod.reactive.ReactiveQueue;
+import com.flowpowered.math.vector.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +100,20 @@ public class BlueMapAPIConnector {
                 LOGGER.debug("Adding marker (id {}) to marker set: {}", addAction.getMarkerIdentifier().getId(), markerSetMap);
                 markerSetMap.put(addAction.getMarkerIdentifier().getId(), markerBuilder.build());
             }
+            if (markerGroup.type() == MarkerGroupType.Extrude) {
+                LOGGER.debug("Adding Extrude marker...");
+                var markerBuilder = ExtrudeMarker.builder()
+                        .position(addAction.getX(), addAction.getY(), addAction.getZ())
+                        .label(addAction.getLabel())
+                        .detail(addAction.getDetail())
+                        .shape(Shape.createRect(addAction.getX(), addAction.getZ(), addAction.getX()+1, addAction.getZ()+1), (float) addAction.getY(), (float) (addAction.getY() + 2.0))
+                        .fillColor(new Color(0, 255, 0, 128))
+                        .lineColor(new Color(0, 0, 255, 128))
+                        .depthTestEnabled(true);
+
+                LOGGER.debug("Adding marker (id {}) to marker set: {}", addAction.getMarkerIdentifier().getId(), markerSetMap);
+                markerSetMap.put(addAction.getMarkerIdentifier().getId(), markerBuilder.build());
+            }
         } else if (markerAction instanceof RemoveMarkerAction removeAction) {
             LOGGER.debug("Adding marker (id {}) to marker set: {}", removeAction.getMarkerIdentifier().getId(), markerSetMap);
             LOGGER.debug("Removing marker...");
@@ -106,6 +124,11 @@ public class BlueMapAPIConnector {
             marker.setLabel(updateAction.getNewLabel());
             if (marker instanceof POIMarker poiMarker) {
                 poiMarker.setDetail(updateAction.getNewDetails());
+                poiMarker.setLabel(updateAction.getNewLabel());
+            }
+            if (marker instanceof ExtrudeMarker extrudeMarker) {
+                extrudeMarker.setDetail(updateAction.getNewDetails());
+                extrudeMarker.setLabel(updateAction.getNewLabel());
             }
         } else {
             LOGGER.warn("Unknown marker action: {}", markerAction);

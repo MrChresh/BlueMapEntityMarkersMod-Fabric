@@ -63,7 +63,7 @@ public class EntityManager implements IResetHandler {
 
     private void removeEntity(EntityEntry entityEntry) {
         blueMapAPIConnector.dispatch(
-                actionFactory.createRemovePOIAction(
+                actionFactory.createRemoveExtrudeAction(
                         entityEntry.x(),
                         entityEntry.y(),
                         entityEntry.z(),
@@ -75,7 +75,7 @@ public class EntityManager implements IResetHandler {
 
     private void addOrUpdateEntity(EntityEntry entityEntry) {;
             blueMapAPIConnector.dispatch(
-                    actionFactory.createAddPOIAction(
+                    actionFactory.createAddExtrudeAction(
                             entityEntry.x(),
                             entityEntry.y(),
                             entityEntry.z(),
