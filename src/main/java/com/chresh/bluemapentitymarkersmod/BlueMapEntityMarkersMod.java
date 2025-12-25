@@ -6,8 +6,13 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.chresh.bluemapentitymarkersmod.entity.EntityEntry;
 import com.chresh.bluemapentitymarkersmod.entity.EntityManager;
+import com.chresh.bluemapentitymarkersmod.util.Constants;
+
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.entity.Entity;
@@ -20,6 +25,7 @@ import net.minecraft.util.math.Box;
 public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 
 	private ScheduledExecutorService scheduler;
+	private static final Logger LOGGER = LoggerFactory.getLogger(Constants.MOD_ID);
 
 	@Override
 	public void onInitializeServer() {
@@ -47,9 +53,14 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 				entityEntries.clear();
 				
             	server.getWorlds().forEach(world -> {
-				world.getEntitiesByClass(MobEntity.class, TheBox, Predicate.not(Entity::isRemoved)).forEach(entity -> {
-
-					if (entity.getWorld().isSkyVisible(entity.getBlockPos())){
+					world.getEntitiesByClass(MobEntity.class, TheBox, Predicate.not(Entity::isRemoved)).forEach(entity -> {
+						
+					LOGGER.debug("Entity...: {}, World {}", entity, entity.getWorld().getRegistryKey().getValue());
+					LOGGER.debug("Entity info: isSkyVisible {}, has skylight {}, has Ceiling {}", entity.getWorld().isSkyVisible(entity.getBlockPos()), entity.getWorld().getDimension().hasSkyLight(), entity.getWorld().getDimension().hasCeiling());
+					
+					
+					if (entity.getWorld().isSkyVisible(entity.getBlockPos()) || !entity.getWorld().getDimension().hasSkyLight() || entity.getWorld().getDimension().hasCeiling()){
+						
 						entityEntries.add(new EntityEntry(
 						entity.getPos(),
 						entity.getType(),
@@ -59,8 +70,9 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 						entity.getBlockPos().getX(),
 						entity.getBlockPos().getY(),
 						entity.getBlockPos().getZ()));}
-					
-				});
+
+				}
+			);
 			});
 			for (EntityEntry entityEntry : entityEntries) {
 				EntityManager.addOrUpdate(entityEntry);

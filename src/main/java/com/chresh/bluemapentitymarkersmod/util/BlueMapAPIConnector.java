@@ -67,23 +67,23 @@ public class BlueMapAPIConnector {
     }
 
     private void processMarkerAction(MarkerAction markerAction) {
-        //LOGGER.info("Processing marker action: {}", markerAction);
+        LOGGER.debug("Processing marker action: {}", markerAction);
 
         var markerSet = getMarkerSet(markerAction.getMarkerIdentifier().parentSet());
 
         if (markerSet.isEmpty()) {
-            //LOGGER.debug("Marker set not found.");
+            LOGGER.debug("Marker set not found.");
             return;
         }
 
-        //LOGGER.debug("Marker set found.");
+        LOGGER.debug("Marker set found.");
         var markerSetMap = markerSet.get().getMarkers();
 
         if (markerAction instanceof AddMarkerAction addAction) {
-            //LOGGER.debug("Adding marker...");
+            LOGGER.debug("Adding marker...");
             var markerGroup = addAction.getMarkerIdentifier().parentSet().markerGroup();
             if (markerGroup.type() == MarkerGroupType.POI) {
-                //LOGGER.debug("Adding POI marker...");
+                LOGGER.debug("Adding POI marker...");
                 var markerBuilder = POIMarker.builder()
                         .position(addAction.getX(), addAction.getY(), addAction.getZ())
                         .label(addAction.getLabel())
@@ -93,15 +93,15 @@ public class BlueMapAPIConnector {
                     markerBuilder.icon(markerGroup.icon(), markerGroup.offsetX(), markerGroup.offsetY());
                 }
 
-                //LOGGER.debug("Adding marker (id {}) to marker set: {}", addAction.getMarkerIdentifier().getId(), markerSetMap);
+                LOGGER.debug("Adding marker (id {}) to marker set: {}", addAction.getMarkerIdentifier().getId(), markerSetMap);
                 markerSetMap.put(addAction.getMarkerIdentifier().getId(), markerBuilder.build());
             }
         } else if (markerAction instanceof RemoveMarkerAction removeAction) {
-            //LOGGER.debug("Adding marker (id {}) to marker set: {}", removeAction.getMarkerIdentifier().getId(), markerSetMap);
-            //LOGGER.debug("Removing marker...");
+            LOGGER.debug("Adding marker (id {}) to marker set: {}", removeAction.getMarkerIdentifier().getId(), markerSetMap);
+            LOGGER.debug("Removing marker...");
             markerSetMap.remove(removeAction.getMarkerIdentifier().getId());
         } else if (markerAction instanceof UpdateMarkerAction updateAction) {
-            //LOGGER.debug("Updating marker...");
+            LOGGER.debug("Updating marker...");
             var marker = Optional.of(markerSetMap.get(markerAction.getMarkerIdentifier().getId())).get();
             marker.setLabel(updateAction.getNewLabel());
             if (marker instanceof POIMarker poiMarker) {

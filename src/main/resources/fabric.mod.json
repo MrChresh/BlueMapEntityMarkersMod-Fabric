@@ -1,14 +1,14 @@
 {
 	"schemaVersion": 1,
-	"id": "bluemapentitymarkersmod",
-	"version": "1.0.0",
-	"name": "bluemapentitymarkersmod",
-	"description": "bluemapentitymarkersmod",
+	"id": "${mod_id}",
+	"version": "${version}",
+	"name": "${mod_name}",
+	"description": "${mod_description}",
 	"authors": [
 		{
 			"name": "chresh",
 			"contact": {
-				"sources": "",
+				"sources": "https://github.com/MrChresh/BlueMapEntityMarkersMod-Fabric",
 				"homepage": ""
 			}
 		}
@@ -29,9 +29,9 @@
 		
 	],
 	"depends": {
-		"fabricloader": ">=0.14.22",
+		"fabricloader": ">=${fabric_loader_version}",
 		"minecraft": "~1.20",
-		"java": ">=17",
+		"java": ">=${java_version}",
 		"fabric-api": "*",
 		"bluemap": "*"
 	}
