@@ -2,15 +2,14 @@ package com.chresh.bluemapentitymarkersmod.entity;
 
 import java.util.UUID;
 
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public record EntityEntry(
         Vec3d pos, EntityType<?> type, UUID uuid, String simpleName, World world, int x,
-            int y, int z) {
-
-
+            int y, int z, EntityDimensions dimensions) {
                 
 
                 public Vec3d getPos() {
@@ -42,5 +41,8 @@ public record EntityEntry(
                 }
                 public int getZ() {
                     return z;
+                }
+                public EntityDimensions getDimensions() {
+                    return dimensions;
                 }
 }

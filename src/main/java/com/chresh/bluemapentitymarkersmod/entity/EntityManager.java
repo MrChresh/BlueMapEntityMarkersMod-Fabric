@@ -63,25 +63,13 @@ public class EntityManager implements IResetHandler {
 
     private void removeEntity(EntityEntry entityEntry) {
         blueMapAPIConnector.dispatch(
-                actionFactory.createRemoveExtrudeAction(
-                        entityEntry.x(),
-                        entityEntry.y(),
-                        entityEntry.z(),
-                        entityEntry.getWorldKey(),
-                        entityEntry.uuid().toString(),
-                        entityEntry.simpleName()));
+                actionFactory.createRemoveExtrudeAction(entityEntry));
             return;
     }
 
     private void addOrUpdateEntity(EntityEntry entityEntry) {;
             blueMapAPIConnector.dispatch(
-                    actionFactory.createAddExtrudeAction(
-                            entityEntry.x(),
-                            entityEntry.y(),
-                            entityEntry.z(),
-                            entityEntry.getWorldKey(),
-                            entityEntry.uuid().toString(),
-                            entityEntry.simpleName()));
+                    actionFactory.createAddExtrudeAction(entityEntry));
             return;
         }
 

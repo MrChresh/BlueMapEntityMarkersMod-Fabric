@@ -68,9 +68,12 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 						entity.getWorld(),
 						entity.getBlockPos().getX(),
 						entity.getBlockPos().getY(),
-						entity.getBlockPos().getZ()));}
-
-				//}
+						entity.getBlockPos().getZ(),
+						entity.getDimensions(entity.getPose())
+					));
+				
+					//}
+				}
 			);
 			});
 			for (EntityEntry entityEntry : entityEntries) {

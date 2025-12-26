@@ -1,15 +1,22 @@
 package com.chresh.bluemapentitymarkersmod.actions;
 
+
+import com.chresh.bluemapentitymarkersmod.entity.EntityEntry;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerIdentifier;
+
+import net.minecraft.entity.EntityDimensions;
 
 public class AddMarkerAction extends MarkerAction {
     private final String label;
     private final String detail;
+    private final EntityDimensions entityDimensions;
 
-    public AddMarkerAction(MarkerIdentifier markerIdentifier, String label, String detail) {
+
+    public AddMarkerAction(MarkerIdentifier markerIdentifier, EntityEntry entityEntry) {
         super(markerIdentifier);
-        this.label = label;
-        this.detail = detail;
+        this.label = entityEntry.getSimpleName();
+        this.detail = entityEntry.getSimpleName();
+        this.entityDimensions = entityEntry.getDimensions();
     }
 
     public String getLabel() {
@@ -18,6 +25,9 @@ public class AddMarkerAction extends MarkerAction {
 
     public String getDetail() {
         return detail;
+    }
+    public EntityDimensions getEntityDimensions() {
+        return entityDimensions;
     }
 
     @Override

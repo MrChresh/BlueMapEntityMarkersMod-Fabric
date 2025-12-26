@@ -18,6 +18,7 @@ import com.chresh.bluemapentitymarkersmod.actions.UpdateMarkerAction;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroupType;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerSetIdentifier;
 import com.chresh.bluemapentitymarkersmod.reactive.ReactiveQueue;
+import com.flowpowered.math.vector.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,14 +102,23 @@ public class BlueMapAPIConnector {
             }
             if (markerGroup.type() == MarkerGroupType.Extrude) {
                 LOGGER.debug("Adding Extrude marker...");
-                var markerBuilder = ExtrudeMarker.builder()
-                        .position(addAction.getX(), addAction.getY(), addAction.getZ())
-                        .label(addAction.getLabel())
-                        .detail(addAction.getDetail())
-                        .shape(Shape.createRect(addAction.getX(), addAction.getZ(), addAction.getX()+1, addAction.getZ()+1), (float) addAction.getY(), (float) (addAction.getY() + 1.0))
-                        .fillColor(new Color(0, 255, 0, 128))
-                        .lineColor(new Color(0, 0, 255, 128))
-                        .depthTestEnabled(true);
+                    
+                    var markerBuilder = ExtrudeMarker.builder()
+                            .position(addAction.getX(), addAction.getY(), addAction.getZ())
+                            .label(addAction.getLabel())
+                            .detail(addAction.getDetail())
+                            .shape(Shape.createRect(addAction.getX() - (double)addAction.getEntityDimensions().width,
+                             addAction.getZ() - (double)addAction.getEntityDimensions().width,
+                              addAction.getX() + (double)addAction.getEntityDimensions().width,
+                               addAction.getZ() + (double)addAction.getEntityDimensions().width),
+                                (float) addAction.getY(),
+                                 (float) (addAction.getY() + addAction.getEntityDimensions().height))
+                            .fillColor(new Color(0, 255, 0, 128))
+                            .lineColor(new Color(0, 0, 255, 128))
+                            .centerPosition()
+                            .depthTestEnabled(true);
+                
+            
 
                 LOGGER.debug("Adding marker (id {}) to marker set: {}", addAction.getMarkerIdentifier().getId(), markerSetMap);
                 markerSetMap.put(addAction.getMarkerIdentifier().getId(), markerBuilder.build());

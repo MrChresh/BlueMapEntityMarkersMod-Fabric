@@ -1,15 +1,20 @@
 package com.chresh.bluemapentitymarkersmod.actions;
 
+import com.chresh.bluemapentitymarkersmod.entity.EntityEntry;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerIdentifier;
+
+import net.minecraft.entity.EntityDimensions;
 
 public class UpdateMarkerAction extends MarkerAction {
     private final String newLabel;
     private final String newDetails;
-
-    public UpdateMarkerAction(MarkerIdentifier markerIdentifier, String newLabel, String newDetail) {
+    private final EntityDimensions entityDimensions;
+    
+    public UpdateMarkerAction(MarkerIdentifier markerIdentifier, EntityEntry entityEntry) {
         super(markerIdentifier);
-        this.newLabel = newLabel;
-        this.newDetails = newDetail;
+        this.newLabel = entityEntry.getSimpleName();
+        this.newDetails = entityEntry.getSimpleName();
+        this.entityDimensions = entityEntry.getDimensions();
     }
 
     public String getNewLabel() {
@@ -20,6 +25,9 @@ public class UpdateMarkerAction extends MarkerAction {
         return newDetails;
     }
 
+    public EntityDimensions getEntityDimensions() {
+        return entityDimensions;
+    }
     @Override
     public String toString() {
         return "UpdateMarkerAction{" +

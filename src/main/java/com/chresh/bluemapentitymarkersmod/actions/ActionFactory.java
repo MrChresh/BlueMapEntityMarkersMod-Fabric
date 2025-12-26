@@ -1,5 +1,6 @@
 package com.chresh.bluemapentitymarkersmod.actions;
 
+import com.chresh.bluemapentitymarkersmod.entity.EntityEntry;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroup;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroupType;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerIdentifier;
@@ -12,35 +13,33 @@ public class ActionFactory {
         this.markerSetIdentifierCollection = markerSetIdentifierCollection;
     }
 
-    public AddMarkerAction createAddExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public AddMarkerAction createAddExtrudeAction(EntityEntry entityEntry) {
         return new AddMarkerAction(
                 new MarkerIdentifier(
-                        x,
-                        y,
-                        z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
-                simpleName,
-                simpleName);
+                        entityEntry.getX(),
+                        entityEntry.getY(),
+                        entityEntry.getZ(),
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
+                        entityEntry);
     }
 
-    public RemoveMarkerAction createRemoveExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public RemoveMarkerAction createRemoveExtrudeAction(EntityEntry entityEntry) {
         return new RemoveMarkerAction(
                 new MarkerIdentifier(
-                        x,
-                        y,
-                        z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))));
+                        entityEntry.getX(),
+                        entityEntry.getY(),
+                        entityEntry.getZ(),
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))));
     }
 
-    public UpdateMarkerAction createUpdateExtrudeAction(int x, int y, int z, String worldKey, String uuid, String simpleName) {
+    public UpdateMarkerAction createUpdateExtrudeAction(EntityEntry entityEntry) {
         return new UpdateMarkerAction(
                 new MarkerIdentifier(
-                        x,
-                        y,
-                        z,
-                        markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
-                simpleName,
-                simpleName);
+                        entityEntry.getX(),
+                        entityEntry.getY(),
+                        entityEntry.getZ(),
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
+                entityEntry);
     }
 
 
