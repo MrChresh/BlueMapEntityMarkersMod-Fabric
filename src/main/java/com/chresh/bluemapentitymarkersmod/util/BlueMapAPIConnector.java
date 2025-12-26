@@ -18,7 +18,6 @@ import com.chresh.bluemapentitymarkersmod.actions.UpdateMarkerAction;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroupType;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerSetIdentifier;
 import com.chresh.bluemapentitymarkersmod.reactive.ReactiveQueue;
-import com.flowpowered.math.vector.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +105,7 @@ public class BlueMapAPIConnector {
                         .position(addAction.getX(), addAction.getY(), addAction.getZ())
                         .label(addAction.getLabel())
                         .detail(addAction.getDetail())
-                        .shape(Shape.createRect(addAction.getX(), addAction.getZ(), addAction.getX()+1, addAction.getZ()+1), (float) addAction.getY(), (float) (addAction.getY() + 2.0))
+                        .shape(Shape.createRect(addAction.getX(), addAction.getZ(), addAction.getX()+1, addAction.getZ()+1), (float) addAction.getY(), (float) (addAction.getY() + 1.0))
                         .fillColor(new Color(0, 255, 0, 128))
                         .lineColor(new Color(0, 0, 255, 128))
                         .depthTestEnabled(true);

@@ -19,7 +19,7 @@ public class ActionFactory {
                         y,
                         z,
                         markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
-                uuid,
+                simpleName,
                 simpleName);
     }
 
@@ -39,7 +39,7 @@ public class ActionFactory {
                         y,
                         z,
                         markerSetIdentifierCollection.getIdentifier(worldKey, new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
-                uuid,
+                simpleName,
                 simpleName);
     }
 
