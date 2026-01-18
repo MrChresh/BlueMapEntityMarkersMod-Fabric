@@ -19,7 +19,7 @@ public class ActionFactory {
                         entityEntry.getX(),
                         entityEntry.getY(),
                         entityEntry.getZ(),
-                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("entity", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
                         entityEntry);
     }
 
@@ -29,7 +29,7 @@ public class ActionFactory {
                         entityEntry.getX(),
                         entityEntry.getY(),
                         entityEntry.getZ(),
-                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))));
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("entity", MarkerGroupType.Extrude, "Entity", "", 0, 0))));
     }
 
     public UpdateMarkerAction createUpdateExtrudeAction(EntityEntry entityEntry) {
@@ -38,7 +38,7 @@ public class ActionFactory {
                         entityEntry.getX(),
                         entityEntry.getY(),
                         entityEntry.getZ(),
-                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
+                        markerSetIdentifierCollection.getIdentifier(entityEntry.getWorldKey(), new MarkerGroup("entity", MarkerGroupType.Extrude, "Entity", "", 0, 0))),
                 entityEntry);
     }
 

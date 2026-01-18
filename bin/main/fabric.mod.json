@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "bluemapentitymarkersmod",
-	"version": "1.20.1-1.0.2",
-	"name": "BlueMap Entity Markers",
-	"description": "A mod for BlueMap that creates markers from Entities",
+	"id": "${mod_id}",
+	"version": "${version}",
+	"name": "${mod_name}",
+	"description": "${mod_description}",
 	"authors": [
 		{
 			"name": "chresh",
@@ -29,9 +29,9 @@
 		
 	],
 	"depends": {
-		"fabricloader": ">=0.14.22",
+		"fabricloader": ">=${fabric_loader_version}",
 		"minecraft": "~1.20",
-		"java": ">=17",
+		"java": ">=${java_version}",
 		"fabric-api": "*",
 		"bluemap": "*"
 	}

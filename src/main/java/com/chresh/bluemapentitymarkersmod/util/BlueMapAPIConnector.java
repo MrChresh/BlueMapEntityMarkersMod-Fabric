@@ -18,7 +18,6 @@ import com.chresh.bluemapentitymarkersmod.actions.UpdateMarkerAction;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerGroupType;
 import com.chresh.bluemapentitymarkersmod.markers.MarkerSetIdentifier;
 import com.chresh.bluemapentitymarkersmod.reactive.ReactiveQueue;
-import com.flowpowered.math.vector.Vector2d;
 
 import java.util.ArrayList;
 import java.util.List;

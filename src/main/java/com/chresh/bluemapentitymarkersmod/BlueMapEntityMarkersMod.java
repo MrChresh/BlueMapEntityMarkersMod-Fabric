@@ -41,7 +41,6 @@ public class BlueMapEntityMarkersMod implements DedicatedServerModInitializer {
 		//org.apache.logging.log4j.core.config.Configurator.setLevel(Constants.MOD_ID, Level.DEBUG);
 
 		if (server != null) {
-		//MinecraftServer server = MinecraftClient.getInstance().getServer();
 
 		this.scheduler = Executors.newScheduledThreadPool(1); // 1 is the size of the thread pool being created
 
